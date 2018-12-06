@@ -3,8 +3,8 @@ PRACTICE Exam 1, problem 3.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Valerie Galluzzi, Mark Hays, Amanda Stouder, Aaron Wilkin,
-         their colleagues, and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues, and Greg Wenning.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -38,7 +38,7 @@ def main():
 def run_test_problem3a():
     """ Tests the   problem3a   function. """
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement this TEST function.
+    # DONE: 2. Implement this TEST function.
     #   It TESTS the  problem1a  function defined below.
     #   Include at least **   5   ** tests (we wrote four for you).
     # -------------------------------------------------------------------------
@@ -96,6 +96,13 @@ def run_test_problem3a():
     print('Test 4 expected:', expected)
     print('       actual:  ', answer)
 
+    # Test 5
+    point = rg.Point(10, 15)
+    expected = 25
+    answer = problem3a(window3, point, 5)
+    print()
+    print('Test 4 expected:', expected)
+    print('       actual:  ', answer)
     window3.close_on_mouse_click()
 
     # -------------------------------------------------------------------------
@@ -146,7 +153,18 @@ def problem3a(window, point, n):
     #    DIFFICULTY:      7 or 8
     #    TIME ESTIMATE:   20 to 35 minutes.
     # -------------------------------------------------------------------------
-
+    x = point.x
+    y = point.y
+    for k in range(n):
+        line = rg.Line(rg.Point(x, y),rg.Point(x, y+50))
+        if 2+k>13:
+            return line.thickness = 13
+        else:
+            return
+        line.attach_to(window)
+        window.render()
+        x = x +20
+        y = y +10
 
 def run_test_problem3b():
     """ Tests the   problem3b   function. """
