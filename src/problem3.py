@@ -97,7 +97,7 @@ def run_test_problem3a():
     print('       actual:  ', answer)
 
     # Test 5
-    point = rg.Point(10, 15)
+    point = rg.Point(100, 200)
     expected = 25
     answer = problem3a(window3, point, 5)
     print()
@@ -145,7 +145,7 @@ def problem3a(window, point, n):
         :type n:      int
     """
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # -------------------------------------------------------------------------
     # -------------------------------------------------------------------------
@@ -155,16 +155,27 @@ def problem3a(window, point, n):
     # -------------------------------------------------------------------------
     x = point.x
     y = point.y
+    total = 0
     for k in range(n):
-        line = rg.Line(rg.Point(x, y),rg.Point(x, y+50))
+        line = rg.Line(rg.Point(x, y), rg.Point(x, y + 50))
         if 2+k>13:
-            return line.thickness = 13
+            line.thickness = 13
         else:
-            return
+            line.thickness = 2+k
         line.attach_to(window)
         window.render()
+
         x = x +20
         y = y +10
+    thickness = -1
+    for k in range(n):
+        thickness = thickness +2
+        if thickness>13:
+            total = total +13
+        else:
+            total= total+thickness
+    return total
+
 
 def run_test_problem3b():
     """ Tests the   problem3b   function. """
@@ -233,7 +244,24 @@ def problem3b(m, point1):
     #    DIFFICULTY:      8 or 9
     #    TIME ESTIMATE:   20 to 30 minutes.
     # -------------------------------------------------------------------------
+    window1 = rg.RoseWindow(400, 650)
+    thickness = -1
+    total = 0
+    for k in range(m):
+        n = 3+(2*k)
+        x = point1.x
+        y = point1.y + 60
+        point1 = rg.Point(x, y)
+        problem3a(window1,point1,n)
+        for k in range(n):
+            thickness = thickness +2
+            if thickness>13:
+                total = total +13
+            else:
+                total= total+thickness
 
+    window1.close_on_mouse_click()
+    return total
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # -----------------------------------------------------------------------------
